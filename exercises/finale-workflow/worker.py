@@ -6,11 +6,14 @@ from temporalio.worker import Worker
 
 from workflow import CertificateGeneratorWorkflow
 
+
 async def main():
     client = await Client.connect("localhost:7233", namespace="default")
     # Run the worker
     worker = Worker(
-        client, task_queue="generate-certificate-taskqueue", workflows=[CertificateGeneratorWorkflow]
+        client,
+        task_queue="generate-certificate-taskqueue",
+        workflows=[CertificateGeneratorWorkflow],
     )
     await worker.run()
 

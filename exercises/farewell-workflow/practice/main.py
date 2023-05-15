@@ -10,9 +10,16 @@ async def main():
     client = await Client.connect("localhost:7233")
 
     # Execute a workflow
-    result = await client.execute_workflow(
-        GreetSomeone.run, sys.argv[1], id="greeting-workflow", task_queue="greeting-tasks"
+    handle = await client.start_workflow(
+        GreetSomeone.run,
+        sys.argv[1],
+        id="greeting-workflow",
+        task_queue="greeting-tasks",
     )
+
+    print(f"Started workflow. Workflow ID: {handle.id}, RunID {handle.result_run_id}")
+
+    result = await handle.result()
 
     print(f"Result: {result}")
 

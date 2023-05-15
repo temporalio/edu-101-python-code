@@ -7,6 +7,7 @@ with workflow.unsafe.imports_passed_through():
     # hint: you can just add a , and add your activity function name
     from translate import greet_in_spanish
 
+
 @workflow.defn
 class GreetSomeone:
     @workflow.run
@@ -16,8 +17,8 @@ class GreetSomeone:
         )
 
         # TODO: uncomment the lines below and change it to execute the Activity function you created
-        #farewell = await workflow.execute_activity(
+        # farewell = await workflow.execute_activity(
         #    greet_in_spanish, name, start_to_close_timeout=timedelta(seconds=5)
-        #)
-    
+        # )
+
         return f"{greeting}\n{farewell}"

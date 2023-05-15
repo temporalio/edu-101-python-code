@@ -10,9 +10,16 @@ async def main():
     client = await Client.connect("localhost:7233")
 
     # Execute a workflow
-    result = await client.execute_workflow(
-        CertificateGeneratorWorkflow.run, sys.argv[1], id="generate-certificate-workflow", task_queue="generate-certificate-taskqueue"
+    handle = await client.start_workflow(
+        CertificateGeneratorWorkflow.run,
+        sys.argv[1],
+        id="generate-certificate-workflow",
+        task_queue="generate-certificate-taskqueue",
     )
+
+    print(f"Started workflow. Workflow ID: {handle.id}, RunID {handle.result_run_id}")
+
+    result = await handle.result()
 
     print(f"Result: {result}")
 

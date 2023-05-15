@@ -5,6 +5,7 @@ from temporalio import workflow
 with workflow.unsafe.imports_passed_through():
     from translate import greet_in_spanish, farewell_in_spanish
 
+
 @workflow.defn
 class GreetSomeone:
     @workflow.run
@@ -16,5 +17,5 @@ class GreetSomeone:
         farewell = await workflow.execute_activity(
             farewell_in_spanish, name, start_to_close_timeout=timedelta(seconds=5)
         )
-    
+
         return f"{greeting}\n{farewell}"

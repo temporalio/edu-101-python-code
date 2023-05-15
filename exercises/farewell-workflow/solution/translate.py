@@ -9,10 +9,12 @@ async def greet_in_spanish(name: str) -> str:
     greeting = call_service("get-spanish-greeting", name)
     return greeting
 
+
 @activity.defn
 async def farewell_in_spanish(name: str) -> str:
     greeting = call_service("get-spanish-farewell", name)
     return greeting
+
 
 # Utility function for making calls to the microservices
 def call_service(stem: str, name: str) -> str:
@@ -24,7 +26,7 @@ def call_service(stem: str, name: str) -> str:
         translation = resp.text
 
         if resp.status_code >= 400:
-            raise Exception(f"HTTP Error {resp.status_code}: {translation}") 
+            raise Exception(f"HTTP Error {resp.status_code}: {translation}")
 
         return translation
     except Exception as e:
