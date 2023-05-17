@@ -18,6 +18,7 @@ tasks:
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
       source /workspace/edu-101-python-code/.bash_aliases
+      sleep 30 # add sleep to give venv time to finish
       source /workspace/.env/bin/activate
       clear
       echo "Use this terminal to run your Worker"
@@ -25,18 +26,16 @@ tasks:
   - name: Terminal
     command: |
       gp open README.md
-      pushd exercises/farewell-workflow/solution
-      mvn compile
-      mvn clean
-      popd
-      source /workspace/edu-101-java-code/.bash_aliases
+      source /workspace/edu-101-python-code/.bash_aliases
+      sleep 30  # add sleep to give venv time to finish
       source /workspace/.env/bin/activate
       clear
       echo "Use this terminal to run commands.."  
     openMode: split-right
   - name: Microservice
     command: |
-      source /workspace/edu-101-java-code/.bash_aliases
+      source /workspace/edu-101-python-code/.bash_aliases
+      sleep 30
       source /workspace/.env/bin/activate
       clear
       echo "Use this terminal to start your microservice in Exercise 3"
