@@ -1,0 +1,8 @@
+alias tctl="docker exec temporal-admin-tools temporal"
+alias workspace="cd ${GITPOD_REPO_ROOT}"
+alias webui="gp preview $(gp url 8080)"
+alias venv="source .env/bin/activate"
+export PATH="$PATH:/home/gitpod/.temporalio/bin"
+echo "temporal configured! try typing temporal -v"
+echo "Your workspace is located at: ${GITPOD_REPO_ROOT}"
+echo "Type the command     workspace      to return to the workspace directory at any time."
