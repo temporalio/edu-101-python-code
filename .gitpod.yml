@@ -18,6 +18,8 @@ tasks:
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
       source /workspace/edu-101-python-code/.bash_aliases
+      clear
+      echo "Waiting for Python packages to install..."
       sleep 30 # add sleep to give venv time to finish
       source /workspace/.env/bin/activate
       clear
@@ -27,6 +29,8 @@ tasks:
     command: |
       gp open README.md
       source /workspace/edu-101-python-code/.bash_aliases
+      clear
+      echo "Waiting for Python packages to install..."
       sleep 30  # add sleep to give venv time to finish
       source /workspace/.env/bin/activate
       clear
@@ -35,6 +39,8 @@ tasks:
   - name: Microservice
     command: |
       source /workspace/edu-101-python-code/.bash_aliases
+      clear
+      echo "Waiting for Python packages to install..."
       sleep 30
       source /workspace/.env/bin/activate
       clear

@@ -41,7 +41,7 @@ The following links provide additional information that you may find helpful as 
 You can launch an exercise environment for this course in GitPod by 
 clicking the button below:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-python-code/tree/gitpod)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-python-code)
 
 Alternatively, you can follow 
 [these instructions](https://learn.temporal.io/getting_started/python/dev_environment/) to 
