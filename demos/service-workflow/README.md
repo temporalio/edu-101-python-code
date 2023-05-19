@@ -21,7 +21,7 @@ Finally, use another terminal window to start the Workflow,
 using the supplied code, specifying your name as input.
 
 ```
-$ go main.py Donna
+$ python main.py Donna
 ```
 
 #### This is the end of the demo
