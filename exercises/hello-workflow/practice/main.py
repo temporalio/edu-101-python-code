@@ -1,6 +1,5 @@
 import asyncio
 
-from temporalio import activity, workflow
 from temporalio.client import Client
 from temporalio.worker import Worker
 
