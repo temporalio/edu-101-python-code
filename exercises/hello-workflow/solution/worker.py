@@ -9,11 +9,7 @@ from greeting import GreetSomeone
 async def main():
     client = await Client.connect("localhost:7233", namespace="default")
     # Run the worker
-    worker = Worker(
-        client,
-        task_queue="greeting-tasks",
-        workflows=[GreetSomeone],
-    )
+    worker = Worker(client, task_queue="greeting-tasks", workflows=[GreetSomeone])
     result = await worker.run()
     print(result)
 

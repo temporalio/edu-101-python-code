@@ -53,7 +53,7 @@ cd exercises/hello-workflow/practice/
 
 ## Part B: Specify a Task Queue Name for the Worker
 
-1. Open the `main.py` file (located in the `practice` subdirectory) in the editor
+1. Open the `worker.py` file (located in the `practice` subdirectory) in the editor
 2. Specify `greeting-tasks` as the name of the task queue
 3. Save your changes
 
@@ -63,7 +63,7 @@ cd exercises/hello-workflow/practice/
 2. Run the following command in the terminal window to start the Worker
 
 ```
-$ python main.py
+$ python worker.py
 ```
 
 ## Part D: Start the Workflow from the Command Line

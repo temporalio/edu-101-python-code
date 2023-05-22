@@ -1,24 +1,24 @@
-from datetime import timedelta
-from temporalio import workflow
+import asyncio
 
-# Import activity, passing it through the sandbox without reloading the module
-with workflow.unsafe.imports_passed_through():
-    # TODO: import your new Activity here
-    # hint: you can just add a , and add your activity function name
-    from translate import greet_in_spanish
+from temporalio import activity, workflow
+from temporalio.client import Client
+from temporalio.worker import Worker
+
+from translate import greet_in_spanish, farewell_in_spanish
+from greeting import GreetSomeone
 
 
-@workflow.defn
-class GreetSomeone:
-    @workflow.run
-    async def run(self, name: str) -> str:
-        greeting = await workflow.execute_activity(
-            greet_in_spanish, name, start_to_close_timeout=timedelta(seconds=5)
-        )
+async def main():
+    client = await Client.connect("localhost:7233", namespace="default")
+    # Run the worker
+    worker = Worker(
+        client,
+        task_queue="greeting-tasks",
+        workflows=[GreetSomeone],
+        activities=[greet_in_spanish, farewell_in_spanish],
+    )
+    await worker.run()
 
-        # TODO: uncomment the lines below and change it to execute the Activity function you created
-        # farewell = await workflow.execute_activity(
-        #    greet_in_spanish, name, start_to_close_timeout=timedelta(seconds=5)
-        # )
 
-        return f"{greeting}\n{farewell}"
+if __name__ == "__main__":
+    asyncio.run(main())

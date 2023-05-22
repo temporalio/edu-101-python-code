@@ -47,7 +47,7 @@ execute the code.**
 
 1. Start the microservice by running `python microservice.py` in a terminal
 2. In another terminal, start your Worker by running `python worker.py`
-3. In a third terminal, execute your Workflow by running `python main.py Donna` 
+3. In a third terminal, execute your Workflow by running `python starter.py Donna` 
     (replacing `Donna` with your own name)
 
 If there is time remaining, experiment with Activity failures and retries 

@@ -39,7 +39,7 @@ but be sure to replace `Mason Egger` with your
 full name.
 
 ```
-$ python main.py "Mason Egger"
+$ python starter.py "Mason Egger"
 ```
 
 * Once the workflow is complete, use the explorer
