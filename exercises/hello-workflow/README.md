@@ -69,14 +69,14 @@ $ python worker.py
 ## Part D: Start the Workflow from the Command Line
 
 1. Open another terminal window in the environment and change to the `practice` subdirectory for this exercise
-2. Run the following command, replacing `Donna` with your first name. Be sure to retain the same quoting shown here when you run the command:
+2. Run the following command, replacing `Mason` with your first name. Be sure to retain the same quoting shown here when you run the command:
 
 ```
 $ temporal workflow start \
     --type GreetSomeone \
     --task-queue greeting-tasks \
     --workflow-id my-first-workflow \
-    --input '"Donna"' 
+    --input '"Mason"' 
 ```
 
 Note that this command starts the Workflow, but it does not wait for it to complete or show the result. 
