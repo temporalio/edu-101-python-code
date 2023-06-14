@@ -13,4 +13,4 @@ class GreetSomeone:
             greet_in_spanish, name, start_to_close_timeout=timedelta(seconds=5)
         )
 
-        return f"{greeting}"
+        return greeting
