@@ -14,7 +14,7 @@ Jinja2==3.1.2
 MarkupSafe==2.1.2
 multidict==6.0.4
 protobuf==4.22.4
-requests==2.30.0
+requests==2.31.0
 temporalio==1.2.0
 types-protobuf==4.22.0.2
 typing_extensions==4.5.0
