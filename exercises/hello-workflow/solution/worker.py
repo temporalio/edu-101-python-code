@@ -10,6 +10,7 @@ async def main():
     client = await Client.connect("localhost:7233", namespace="default")
     # Run the worker
     worker = Worker(client, task_queue="greeting-tasks", workflows=[GreetSomeone])
+    print("Starting worker...")
     await worker.run()
 
 

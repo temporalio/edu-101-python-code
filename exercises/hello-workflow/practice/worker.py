@@ -15,8 +15,8 @@ async def main():
         task_queue="TODO",
         workflows=[GreetSomeone],
     )
-    result = await worker.run()
-    print(result)
+    print("Starting worker...")
+    await worker.run()
 
 
 if __name__ == "__main__":

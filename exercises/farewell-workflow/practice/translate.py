@@ -29,7 +29,6 @@ class TranslateActivities:
             if response.status >= 400:
                 raise ApplicationError(
                     f"HTTP Error {response.status}: {translation}",
-                    non_retryable=response.status < 500,
                 )
 
             return translation
