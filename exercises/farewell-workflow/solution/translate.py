@@ -13,8 +13,8 @@ class TranslateActivities:
 
     @activity.defn
     async def farewell_in_spanish(self, name: str) -> str:
-        greeting = await self.call_service("get-spanish-farewell", name)
-        return greeting
+        farewell = await self.call_service("get-spanish-farewell", name)
+        return farewell
 
     # Utility method for making calls to the microservices
     async def call_service(self, stem: str, name: str) -> str:
