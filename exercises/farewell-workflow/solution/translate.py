@@ -1,6 +1,5 @@
 import urllib.parse
 from temporalio import activity
-from temporalio.exceptions import ApplicationError
 
 
 class TranslateActivities:
@@ -23,11 +22,5 @@ class TranslateActivities:
         url = f"{base}?name={urllib.parse.quote(name)}"
 
         async with self.session.get(url) as response:
-            translation = await response.text()
-
-            if response.status >= 400:
-                raise ApplicationError(
-                    f"HTTP Error {response.status}: {translation}",
-                )
-
-            return translation
+            response.raise_for_status()
+            return await response.text()

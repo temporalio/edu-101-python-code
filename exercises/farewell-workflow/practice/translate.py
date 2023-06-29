@@ -1,6 +1,5 @@
 import urllib.parse
 from temporalio import activity
-from temporalio.exceptions import ApplicationError
 
 
 class TranslateActivities:

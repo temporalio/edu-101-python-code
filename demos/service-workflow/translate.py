@@ -1,21 +1,16 @@
-import requests
 import urllib.parse
-from typing import Tuple
 from temporalio import activity
 
 
-@activity.defn
-async def greet_in_spanish(name: str) -> str:
-    base = "http://localhost:9999/get-spanish-greeting?name=%s"
-    url = base % urllib.parse.quote(name)
+class TranslateActivities:
+    def __init__(self, session):
+        self.session = session
 
-    try:
-        resp = requests.get(url)
-        translation = resp.text
+    @activity.defn
+    async def greet_in_spanish(self, name: str) -> str:
+        base = f"http://localhost:9999/get-spanish-greeting"
+        url = f"{base}?name={urllib.parse.quote(name)}"
 
-        if resp.status_code >= 400:
-            raise Exception(f"HTTP Error {resp.status_code}: {translation}") 
-
-        return translation
-    except Exception as e:
-        return f"{e}"
+        async with self.session.get(url) as response:
+            response.raise_for_status()
+            return await response.text()
