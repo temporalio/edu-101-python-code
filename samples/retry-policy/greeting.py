@@ -4,7 +4,7 @@ from temporalio.common import RetryPolicy
 
 # Import activity, passing it through the sandbox without reloading the module
 with workflow.unsafe.imports_passed_through():
-    from greeting import greet_someone
+    from translate import TranslateActivities
 
 
 @workflow.defn
@@ -18,7 +18,7 @@ class GreetSomeone:
             maximum_attempts=100,
         )
         greeting = await workflow.execute_activity(
-            greet_someone,
+            TranslateActivities.greet_in_spanish,
             name,
             start_to_close_timeout=timedelta(seconds=5),
             retry_policy=retry_policy,
