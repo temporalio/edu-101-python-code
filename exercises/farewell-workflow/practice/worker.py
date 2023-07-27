@@ -19,7 +19,8 @@ async def main():
             client,
             task_queue="greeting-tasks",
             workflows=[GreetSomeone],
-            activities=[activities.greet_in_spanish, activities.farewell_in_spanish],
+            # TODO register your new activity below
+            activities=[activities.greet_in_spanish],
         )
         print("Starting the worker....")
         await worker.run()
