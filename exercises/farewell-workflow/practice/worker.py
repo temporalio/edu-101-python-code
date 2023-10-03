@@ -1,5 +1,5 @@
+import concurrent.futures
 import asyncio
-import aiohttp
 
 from temporalio.client import Client
 from temporalio.worker import Worker
@@ -12,15 +12,16 @@ async def main():
     client = await Client.connect("localhost:7233", namespace="default")
 
     # Run the worker
-    async with aiohttp.ClientSession() as session:
-        activities = TranslateActivities(session)
+    activities = TranslateActivities()
 
+    with concurrent.futures.ThreadPoolExecutor(max_workers=100) as activity_executor:
         worker = Worker(
             client,
             task_queue="greeting-tasks",
             workflows=[GreetSomeone],
             # TODO register your new activity below
             activities=[activities.greet_in_spanish],
+            activity_executor=activity_executor,
         )
         print("Starting the worker....")
         await worker.run()
