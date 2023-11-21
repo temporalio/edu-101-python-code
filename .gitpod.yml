@@ -14,7 +14,7 @@ tasks:
       source /workspace/edu-101-python-code/.bash_aliases
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
-      temporal server start-dev --ui-port 8080
+      temporal server start-dev --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
   - name: Worker
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
