@@ -1,5 +1,5 @@
 # Exercise 3: Farewell Workflow
-During this exercise, you will create an Activity function,
+During this exercise, you will create an Activity method,
 register it with the Worker, and modify a Workflow to execute it.
 
 Before continuing, kill any Worker instances still running from any
@@ -12,29 +12,29 @@ you'll need to change. If you get stuck and need additional hints, or
 if you want to check your work, look at the completed example in the
 `solution` directory. 
 
-## Part A: Write an Activity Function
-The `translate.py` file contains a function (`greet_in_spanish`) that uses a 
+## Part A: Write an Activity Method
+The `translate.py` file contains a method (`greet_in_spanish`) that uses a 
 microservice to get a customized greeting in Spanish. This file also contains 
-a utility function (`call_service`) that the Activity uses to call the microservice. 
+a utility method (`call_service`) that the Activity uses to call the microservice. 
 
 1. Open the `translate.py` file (located in the `practice` subdirectory) in the editor
 2. Create a new Activity that will get a custom farewell message from the microservice.
-   1. Copy the `greet_in_spanish` function
-   2. Rename the new function (use any valid name you like)
-   3. Change `get-spanish-greeting` in this new function to `get-spanish-farewell`
+   1. Copy the `greet_in_spanish` method
+   2. Rename the new method (use any valid name you like)
+   3. Change `get-spanish-greeting` in this new method to `get-spanish-farewell`
    4. Save your changes to this file
 
-## Part B: Register the Activity Function
+## Part B: Register the Activity Method
 1. Open the `worker.py` file (located in the `practice` subdirectory) in the editor
 2. Modify the lines that registers your new Activity with the Worker (hint: you'll use the
-   name you used for the new function in an earlier step).
+   name you used for the new method in an earlier step).
 3. Save your changes to this file
 
 
 ## Part C: Modify the Workflow to Execute Your New Activity
 1. Open the `greeting.py` file (located in the `practice` subdirectory) in the editor
 2. Look for the TODO message, uncomment the lines below it, and then change those lines
-   to execute the Activity function you created
+   to execute the Activity method you created
 3. Save your changes to this file
 
 
