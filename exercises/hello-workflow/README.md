@@ -12,6 +12,8 @@ in the `solution` subdirectory.
 
 ## Part A: Create a Virtual Environment and Install the Necessary Dependencies
 
+**If you are using the GitPod enviornment provided by the course you can skip this step!**
+
 1. Open a terminal window in the environment and change directories to the root directory of the
 `edu-101-python-code` repository
 2. Run the following command to create a virtual environment
@@ -51,14 +53,14 @@ cd exercises/hello-workflow/practice/
 1. Open the `greeting.py` file (located in the `practice` subdirectory) in the editor
 2. Review the input parameters, business logic, and return value. 
 
-## Part B: Specify a Task Queue Name for the Worker
+## Part C: Specify a Task Queue Name for the Worker
 
 1. Open the `worker.py` file (located in the `practice` subdirectory) in the editor
 2. Specify `greeting-tasks` as the name of the task queue
 3. Save your changes
 
 
-## Part C: Start the Worker
+## Part D: Start the Worker
 
 2. Run the following command in the terminal window to start the Worker
 
@@ -66,7 +68,7 @@ cd exercises/hello-workflow/practice/
 $ python worker.py
 ```
 
-## Part D: Start the Workflow from the Command Line
+## Part E: Start the Workflow from the Command Line
 
 1. Open another terminal window in the environment and change to the `practice` subdirectory for this exercise
 2. Run the following command, replacing `Mason` with your first name. Be sure to retain the same quoting shown here when you run the command:
