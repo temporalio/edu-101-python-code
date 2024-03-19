@@ -12,7 +12,7 @@ in the `solution` subdirectory.
 
 ## Part A: Create a Virtual Environment and Install the Necessary Dependencies
 
-**If you are using the GitPod enviornment provided by the course you can skip this step!**
+### If you are using the GitPod enviornment provided by the course you can skip this step!
 
 1. Open a terminal window in the environment and change directories to the root directory of the
 `edu-101-python-code` repository
@@ -84,7 +84,7 @@ $ temporal workflow start \
 Note that this command starts the Workflow, but it does not wait for it to complete or show the result. 
 If you have time, continue with the optional part of the exercise below to see how to view the result using `temporal`.
 
-## Part E (Optional): Display the Result
+## Part F (Optional): Display the Result
 You can run the following command to display the result of a Workflow Execution: 
 
 ```
