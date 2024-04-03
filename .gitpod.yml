@@ -1,48 +1,61 @@
-image: gitpod/workspace-full:2023-01-16-03-31-28
+image: temporalio/gitpod-edu:1.2
 tasks:
-  - name: Set up aliases 
-    init: cp .bash_aliases ~/.bash_aliases   # ensure new terminals also have access to tctl
-  - name: Temporal Local Development Server
+    # task links a bash configuration file to a location that is not
+    # specific to this course (/etc/bash.bashrc sources it from there)
+  - name: Shell configuration
     init: |
-      curl -sSf https://temporal.download/cli.sh | sh
+      ln /workspace/edu-101-python-code/.bash.cfg /workspace/.bash.cfg
       python -m venv /workspace/.env
       source /workspace/.env/bin/activate
       python -m pip install -r requirements.txt
+      exit;
+    # task starts the Temporal Service via the CLI
+  - name: Temporal Local Development Server
     command: |
-      echo "waiting for server...."      
-      clear
-      source /workspace/edu-101-python-code/.bash_aliases
-      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
-      temporal server start-dev --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
-  - name: Worker
-    command: |
-      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
-      source /workspace/edu-101-python-code/.bash_aliases
-      clear
-      echo "Waiting for Python packages to install..."
-      sleep 30 # add sleep to give venv time to finish
-      source /workspace/.env/bin/activate
-      clear
-      echo "Use this terminal to run your Worker"
+      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
+      temporal server start-dev \
+        --ui-port 8080 \
+        --db-filename /workspace/.cluster-persistence.db
     openMode: tab-after
-  - name: Terminal
+  - name: Display Web UI
+    command: |
+      echo "Waiting for server...."
+      gp ports await 8080 && gp preview $(gp url 8080)
+      exit;
+  - name: Display Exercise Instructions
     command: |
       gp open README.md
-      source /workspace/edu-101-python-code/.bash_aliases
+      exit;
+  - name: Worker
+    command: |
+      # use the original file path so that this won't depend on the 
+      # completion of the task above that links this elsewhere (the
+      # Docker image expects it in the same location for every course, 
+      # but this .gitpod.yml file can use course-specific paths)
+      source /workspace/edu-101-python-code/.bash.cfg
       clear
       echo "Waiting for Python packages to install..."
-      sleep 30  # add sleep to give venv time to finish
+      sleep 20  # add sleep to give venv time to finish
       source /workspace/.env/bin/activate
       clear
-      echo "Use this terminal to run commands.."  
+      echo "Use this terminal to start your Worker."
+  - name: Terminal
+    command: |
+      source /workspace/edu-101-python-code/.bash.cfg
+      clear
+      echo "Waiting for Python packages to install..."
+      sleep 20  # add sleep to give venv time to finish
+      source /workspace/.env/bin/activate
+      clear
+      echo "Use this terminal to run commands.."
     openMode: split-right
   - name: Microservice
     command: |
-      source /workspace/edu-101-python-code/.bash_aliases
+      source /workspace/edu-101-python-code/.bash.cfg
       clear
       echo "Waiting for Python packages to install..."
-      sleep 30
+      sleep 20  # add sleep to give venv time to finish
       source /workspace/.env/bin/activate
       clear
       echo "Use this terminal to start your microservice in Exercise 3"
@@ -53,9 +66,9 @@ ports:
   - name: Temporal server
     port: 7233
     onOpen: ignore
-  - name: Temporal Web UI v2
-    port: 8080 # temporal UI
-    description: New (v2) Temporal Web UI
+  - name: Temporal Web UI
+    port: 8080  # custom port, as per --ui-port option above
+    description: Temporal Web UI
     onOpen: ignore
     visibility: private
   - name: Greeting Service
@@ -68,7 +81,13 @@ vscode:
   extensions:
     - golang.Go
     - ms-python.python
+    - ms-python.debugpy
     - redhat.java
     - vscjava.vscode-java-test
     - vscjava.vscode-java-debug
     - wingrunr21.vscode-ruby
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
+    - ms-toolsai.vscode-jupyter-cell-tags
+    - ms-toolsai.vscode-jupyter-slideshow
