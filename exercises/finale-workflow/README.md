@@ -25,6 +25,7 @@ $ java -classpath \
     io.temporal.training.PdfCertWorker
 ```
 
+**Note:** If you are in the GitPod environment you can use the shortcut `ex4j`
 
 # Run the Workflow Worker (implemented in Python):
 In another terminal, run this command:
