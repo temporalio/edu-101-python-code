@@ -8,7 +8,7 @@
         }
     },
     "forwardPorts": [8080, 7233, 9999],
-    "postStartCommand": "bash -c 'python -m venv .env && source .env/bin/activate && python -m pip install -r requirements.txt && temporal server start-dev --ui-port 8080'",
+    "postStartCommand": "bash ./devcontainer/python_setup.sh",
     "postAttachCommand": "source .env/bin/activate",
     "remoteEnv": {
         "PROMPT_DIRTRIM": "2"
