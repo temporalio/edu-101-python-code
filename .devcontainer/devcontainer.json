@@ -1,0 +1,16 @@
+{
+    "image": "temporalio/gitpod-edu:1.4",
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "README.md"
+            ]
+        }
+    },
+    "forwardPorts": [8080, 7233, 9999],
+    "postStartCommand": "python -m venv /workspace/.env && source /workspace/.env/bin/activate && python -m pip install -r requirements.txt && temporal server start-dev --ui-port 8080",
+    "postAttachCommand": "source /workspace/.env/bin/activate",
+    "remoteEnv": {
+        "PROMPT_DIRTRIM": "2"
+    }
+}
