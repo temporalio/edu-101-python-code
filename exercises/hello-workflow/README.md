@@ -81,8 +81,21 @@ $ temporal workflow start \
     --input '"Mason"' 
 ```
 
+Notice the quoting for the input value, which has double quotes inside of single quotes. The input passed to the `temporal` command must be provided in JSON format and the quoting used here is necessary to pass the value through the shell and into the Workflow in the correct format.
+
 Note that this command starts the Workflow, but it does not wait for it to complete or show the result. 
+
 If you have time, continue with the optional part of the exercise below to see how to view the result using `temporal`.
+
+### Using the CLI to Start a Workflow with Windows
+
+The mix of single and double quotes we currently have pertains to UNIX-style shells. However, If you are running the Temporal CLI in Windows (such as Powershell), you will need to use Windows-style quote escaping like this:
+
+```
+temporal workflow start --type GreetSomeone --task-queue greeting-tasks --workflow-id my-first-workflow --input '\"Mason\"'
+```
+
+This is a general Windows approach for handling quotes in parameters, not something specific to Temporal.
 
 ## Part F (Optional): Display the Result
 You can run the following command to display the result of a Workflow Execution: 
