@@ -12,7 +12,7 @@ in the `solution` subdirectory.
 
 ## Part A: Create a Virtual Environment and Install the Necessary Dependencies
 
-### If you are using the GitPod enviornment provided by the course you can skip this step!
+### If you are using the Codespaces enviornment provided by the course you can skip this step!
 
 1. Open a terminal window in the environment and change directories to the root directory of the
 `edu-101-python-code` repository
