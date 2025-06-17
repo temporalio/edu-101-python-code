@@ -10,7 +10,7 @@ itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 multidict==6.0.5
-protobuf==5.27.0
+protobuf==5.29.5
 temporalio==1.6.0
 types-protobuf==5.26.0.20240422
 typing_extensions==4.12.1
