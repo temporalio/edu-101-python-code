@@ -14,5 +14,5 @@ protobuf==5.29.5
 temporalio==1.6.0
 types-protobuf==5.26.0.20240422
 typing_extensions==4.12.1
-Werkzeug==3.0.3
+Werkzeug==3.0.6
 yarl==1.9.4
