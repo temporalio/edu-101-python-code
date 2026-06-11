@@ -8,7 +8,7 @@ The last exercise in this workshop does exactly that. The Workflow
 itself is written in Python, but the Activity that is executed as part
 of this Workflow is written in Java, as is the Worker that runs it.
 Since the Activity is written in Java, it's able to use a Java graphics
-library that would otherwise be would be incompatible with a typical 
+library that would otherwise be incompatible with a typical 
 Python program. Since the Workflow and Activities are implemented in two 
 different languages, you'll need to start two Worker programs, one 
 written in Java that will execute the Activity code and one written 
